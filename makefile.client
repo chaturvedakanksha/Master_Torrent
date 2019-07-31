@@ -1,0 +1,13 @@
+CC=g++
+
+CFLAGS = -Wall -std=c++1z
+
+DEPS = client_utility.h
+
+OBJ = client_utility.o -lcrypto client.o -lcrypto -lpthread
+
+%.o: %.cpp ($DEPS)
+		$(CC) $(CFLAGS) -c -o $@ $< 
+
+client : $(OBJ)
+		$(CC) $(CFLAGS) -o $@ $^

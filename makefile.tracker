@@ -1,0 +1,13 @@
+CC=g++
+
+CFLAGS = -Wall -std=c++1z
+
+DEPS = tracker_utility.h
+
+OBJ = tracker_utility.o tracker.o -lpthread
+
+%.o: %.cpp ($DEPS)
+		$(CC) $(CFLAGS) -c -o $@ $< 
+
+tracker : $(OBJ)
+		$(CC) $(CFLAGS) -o $@ $^
